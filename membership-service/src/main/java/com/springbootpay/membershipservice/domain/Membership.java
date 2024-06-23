@@ -18,8 +18,22 @@ public class Membership {
     // Membership 고객 정보에 대한 핵심 도메인이기 때문에
     // 오염이 되면 안되는 도메인
 
-    public static Membership generateMember(MembershipId membershipId){
-        return new Membership(membershipId.membershipId);
+    public static Membership generateMember (
+        MembershipId membershipId,
+        MembershipName membershipName,
+        MembershipEmail membershipEmail,
+        MembershipAddress membershipAddress,
+        MembershipIsValid membershipIsValid,
+        MembershipIsCorp membershipIsCorp
+    ){
+        return new Membership(
+                membershipId.membershipId,
+                membershipName.nameValue,
+                membershipEmail.MembershipEmail,
+                membershipAddress.MembershipAddress,
+                membershipIsValid.isValidValue,
+                membershipIsCorp.isCorpValue
+        );
     }
 
     @Value
@@ -28,5 +42,45 @@ public class Membership {
             this.membershipId = value;
         }
         String membershipId;
+    }
+
+    @Value
+    public static class MembershipName {
+        public MembershipName(String value) {
+            this.nameValue = value;
+        }
+        String nameValue;
+    }
+
+    @Value
+    public static class MembershipEmail {
+        public MembershipEmail(String value) {
+            this.MembershipEmail = value;
+        }
+        String MembershipEmail;
+    }
+
+    @Value
+    public static class MembershipAddress {
+        public MembershipAddress(String value) {
+            this.MembershipAddress = value;
+        }
+        String MembershipAddress;
+    }
+
+    @Value
+    public static class MembershipIsValid {
+        public MembershipIsValid(boolean value) {
+            this.isValidValue = value;
+        }
+        boolean isValidValue;
+    }
+
+    @Value
+    public static class MembershipIsCorp {
+        public MembershipIsCorp(boolean value) {
+            this.isCorpValue = value;
+        }
+        boolean isCorpValue;
     }
 }
