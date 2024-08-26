@@ -1,8 +1,10 @@
 package common;
 
+import org.hibernate.exception.ConstraintViolationException;
+
 import javax.xml.validation.Validator;
 
-public class SelfValidating<T> {
+public abstract class SelfValidating<T> {
 
     private Validator validator;
 
@@ -17,4 +19,5 @@ public class SelfValidating<T> {
             throw new ConstraintViolationException(violations);
         }
     }
+    
 }
